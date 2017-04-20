@@ -23,7 +23,7 @@ require "arrow-numo-narray/version"
 
 Gem::Specification.new do |spec|
   spec.name = "red-arrow-numo-narray"
-  spec.version = Arrow::VERSION
+  spec.version = ArrowNumoNArray::VERSION
   spec.homepage = "https://github.com/red-data-tools/red-arrow-numo-narray"
   spec.authors = ["Kouhei Sutou"]
   spec.email = ["kou@clear-code.com"]
