@@ -1,0 +1,15 @@
+notifications:
+  email:
+    recipients:
+      - kou@cozmixng.org
+
+sudo: required
+
+services:
+  - docker
+
+install:
+  - docker build -t red-data-tools/red-arrow-numo-narray .
+
+script:
+  - docker run red-data-tools/red-arrow-numo-narray /bin/sh -c "bundle exec rake"
