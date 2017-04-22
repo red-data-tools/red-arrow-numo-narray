@@ -29,7 +29,7 @@ class ToNAarrayTest < Test::Unit::TestCase
       ],
     ]
     shape = [3, 2, 4]
-    tensor = Arrow::Tensor.new(Arrow::UInt8DataType.new,
+    tensor = Arrow::Tensor.new(Arrow::Int8DataType.new,
                                Arrow::Buffer.new(data.flatten.pack("c*")),
                                shape,
                                nil,
@@ -54,7 +54,7 @@ class ToNAarrayTest < Test::Unit::TestCase
       ],
     ]
     shape = [3, 2, 4]
-    tensor = Arrow::Tensor.new(Arrow::UInt16DataType.new,
+    tensor = Arrow::Tensor.new(Arrow::Int16DataType.new,
                                Arrow::Buffer.new(data.flatten.pack("s*")),
                                shape,
                                nil,
@@ -79,7 +79,7 @@ class ToNAarrayTest < Test::Unit::TestCase
       ],
     ]
     shape = [3, 2, 4]
-    tensor = Arrow::Tensor.new(Arrow::UInt32DataType.new,
+    tensor = Arrow::Tensor.new(Arrow::Int32DataType.new,
                                Arrow::Buffer.new(data.flatten.pack("l*")),
                                shape,
                                nil,
@@ -104,7 +104,7 @@ class ToNAarrayTest < Test::Unit::TestCase
       ],
     ]
     shape = [3, 2, 4]
-    tensor = Arrow::Tensor.new(Arrow::UInt64DataType.new,
+    tensor = Arrow::Tensor.new(Arrow::Int64DataType.new,
                                Arrow::Buffer.new(data.flatten.pack("q*")),
                                shape,
                                nil,
