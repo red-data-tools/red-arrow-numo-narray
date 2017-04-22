@@ -21,8 +21,8 @@ Red Arrow Numo::NArray adds `Arrow::Tensor#to_narray` and `#to_arrow` to `Numo::
 ```ruby
 require "arrow-numo-narray"
 
-tensor.to_narray # -> A Numo::NArray's numeric subclass such as Numo::Int8
-narray.to_arrow  # -> An Arrow::Tensor object
+tensor.to_narray # -> An object of Numo::NArray's numeric subclass such as Numo::Int8
+narray.to_arrow  # -> An object of Arrow::Tensor
 ```
 
 ## Dependencies
