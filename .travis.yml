@@ -1,7 +1,7 @@
 notifications:
   email:
     recipients:
-      - kou@cozmixng.org
+      - red-data-tools@ml.commit-email.info
 
 sudo: required
 
