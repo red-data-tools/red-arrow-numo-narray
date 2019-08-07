@@ -2,8 +2,6 @@ notifications:
   webhooks:
     - https://webhook.commit-email.info/
 
-sudo: required
-
 services:
   - docker
 
