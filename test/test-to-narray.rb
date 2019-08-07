@@ -14,6 +14,14 @@
 
 class ToNAarrayTest < Test::Unit::TestCase
   sub_test_case("Array") do
+    test("with NULL") do
+      array = Arrow::Int8Array.new([0, nil])
+      message = "can't convert #{array.class} that has null values to NArray"
+      assert_raise(ArrowNumoNArray::UnconvertibleError.new(message)) do
+        array.to_narray
+      end
+    end
+
     test("Int8") do
       array = Arrow::Int8Array.new([-(2 ** 7), 0, 2 ** 7 - 1])
       assert_equal(Numo::Int8[-(2 ** 7), 0, 2 ** 7 - 1],

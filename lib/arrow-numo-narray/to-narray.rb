@@ -77,7 +77,7 @@ module Arrow
     def to_narray
       unless n_nulls.zero?
         message = "can't convert #{self.class} that has null values to NArray"
-        raise UnconvertableError, message
+        raise ArrowNumoNArray::UnconvertibleError, message
       end
       narray = value_data_type.narray_class.new(length)
       narray.store_binary(buffer.data.to_s)

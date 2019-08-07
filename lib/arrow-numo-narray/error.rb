@@ -16,6 +16,6 @@ module ArrowNumoNArray
   class Error < StandardError
   end
 
-  class UncovertableError < Error
+  class UnconvertibleError < Error
   end
 end
