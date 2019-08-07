@@ -1,4 +1,4 @@
-# Copyright 2017 Kouhei Sutou <kou@clear-code.com>
+# Copyright 2017-2019 Sutou Kouhei <kou@clear-code.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -70,6 +70,18 @@ module Arrow
   class DoubleDataType
     def narray_class
       Numo::DFloat
+    end
+  end
+
+  class Array
+    def to_narray
+      unless n_nulls.zero?
+        message = "can't convert #{self.class} that has null values to NArray"
+        raise UnconvertableError, message
+      end
+      narray = value_data_type.narray_class.new(length)
+      narray.store_binary(buffer.data.to_s)
+      narray
     end
   end
 
