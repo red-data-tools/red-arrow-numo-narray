@@ -85,6 +85,22 @@ module Arrow
     end
   end
 
+  class ChunkedArray
+    def to_narray
+      unless n_nulls.zero?
+        message = "can't convert #{self.class} that has null values to NArray"
+        raise ArrowNumoNArray::UnconvertibleError, message
+      end
+      narray = value_data_type.narray_class.new(length)
+      data = ""
+      chunks.each do |chunk|
+        data << chunk.buffer.data.to_s
+      end
+      narray.store_binary(data)
+      narray
+    end
+  end
+
   class Tensor
     def to_narray
       narray = value_data_type.narray_class.new(shape)

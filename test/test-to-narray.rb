@@ -83,6 +83,107 @@ class ToNAarrayTest < Test::Unit::TestCase
     end
   end
 
+  sub_test_case("ChunkedArray") do
+    test("with NULL") do
+      chunked_array = Arrow::ChunkedArray.new([Arrow::Int8Array.new([0, nil])])
+      message =
+        "can't convert #{chunked_array.class} that has null values to NArray"
+      assert_raise(ArrowNumoNArray::UnconvertibleError.new(message)) do
+        chunked_array.to_narray
+      end
+    end
+
+    test("Int8") do
+      arrays = [
+        Arrow::Int8Array.new([-(2 ** 7), 0]),
+        Arrow::Int8Array.new([2 ** 7 - 1]),
+      ]
+      assert_equal(Numo::Int8[-(2 ** 7), 0, 2 ** 7 - 1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("Int16") do
+      arrays = [
+        Arrow::Int16Array.new([-(2 ** 15), 0]),
+        Arrow::Int16Array.new([2 ** 15 - 1]),
+      ]
+      assert_equal(Numo::Int16[-(2 ** 15), 0, 2 ** 15 - 1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("Int32") do
+      arrays = [
+        Arrow::Int32Array.new([-(2 ** 31), 0]),
+        Arrow::Int32Array.new([2 ** 31 - 1]),
+      ]
+      assert_equal(Numo::Int32[-(2 ** 31), 0, 2 ** 31 - 1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("Int64") do
+      arrays = [
+        Arrow::Int64Array.new([-(2 ** 63), 0]),
+        Arrow::Int64Array.new([2 ** 63 - 1]),
+      ]
+      assert_equal(Numo::Int64[-(2 ** 63), 0, 2 ** 63 - 1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("UInt8") do
+      arrays = [
+        Arrow::UInt8Array.new([0]),
+        Arrow::UInt8Array.new([2 ** 8 - 1]),
+      ]
+      assert_equal(Numo::UInt8[0, 2 ** 8 - 1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("UInt16") do
+      arrays = [
+        Arrow::UInt16Array.new([0]),
+        Arrow::UInt16Array.new([2 ** 16 - 1]),
+      ]
+      assert_equal(Numo::UInt16[0, 2 ** 16 - 1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("UInt32") do
+      arrays = [
+        Arrow::UInt32Array.new([0]),
+        Arrow::UInt32Array.new([2 ** 32 - 1]),
+      ]
+      assert_equal(Numo::UInt32[0, 2 ** 32 - 1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("UInt64") do
+      arrays = [
+        Arrow::UInt64Array.new([0]),
+        Arrow::UInt64Array.new([2 ** 64 - 1]),
+      ]
+      assert_equal(Numo::UInt64[0, 2 ** 64 - 1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("Float") do
+      arrays = [
+        Arrow::FloatArray.new([-1.1, 0]),
+        Arrow::FloatArray.new([1.1]),
+      ]
+      assert_equal(Numo::SFloat[-1.1, 0, 1.1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+
+    test("Double") do
+      arrays = [
+        Arrow::DoubleArray.new([-1.1, 0]),
+        Arrow::DoubleArray.new([1.1]),
+      ]
+      assert_equal(Numo::DFloat[-1.1, 0, 1.1],
+                   Arrow::ChunkedArray.new(arrays).to_narray)
+    end
+  end
+
   sub_test_case("Tensor") do
     test("Int8") do
       data = [
