@@ -1,5 +1,16 @@
 # News
 
+## 0.0.4 - 2019-08-19
+
+### Improvements
+
+  * Added `Arrow::ChunkedArray#to_narray`.
+    [GitHub#2][Suggested by Kenta Murata]
+
+### Thanks
+
+  * Kenta Murata
+
 ## 0.0.3 - 2019-08-07
 
 ### Fixes
