@@ -15,11 +15,14 @@
 module Numo
   module ArrowConvertable
     def to_arrow
-      Arrow::Tensor.new(arrow_data_type,
-                        Arrow::Buffer.new(to_binary),
-                        shape,
-                        nil,
-                        nil)
+      data = to_binary
+      tensor = Arrow::Tensor.new(arrow_data_type,
+                                 Arrow::Buffer.new(data),
+                                 shape,
+                                 nil,
+                                 nil)
+      tensor.instance_variable_set(:@data, data)
+      tensor
     end
   end
 
