@@ -1,5 +1,16 @@
 # News
 
+## 0.0.5 - 2020-05-23
+
+### Fixes
+
+  * Fixed a crash bug caused by `#to_arrow` object.
+    [GitHub#5][Reported by dsisnero]
+
+### Thanks
+
+  * dsisnero
+
 ## 0.0.4 - 2019-08-19
 
 ### Improvements
