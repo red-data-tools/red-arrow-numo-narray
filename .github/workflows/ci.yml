@@ -1,0 +1,15 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test with Docker
+        run : |
+          docker build -t red-data-tools/red-arrow-numo-narray .
+          docker run red-data-tools/red-arrow-numo-narray /bin/sh -c "bundle exec rake"
