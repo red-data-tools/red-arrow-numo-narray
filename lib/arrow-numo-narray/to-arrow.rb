@@ -22,6 +22,10 @@ module Numo
                         nil,
                         nil)
     end
+
+    def to_arrow_array
+      to_arrow.to_arrow_array
+    end
   end
 
   class Int8

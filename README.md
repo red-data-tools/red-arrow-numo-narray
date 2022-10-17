@@ -8,7 +8,7 @@ Red Arrow Numo::NArray
 
 Red Arrow Numo::NArray is a library that provides converters between Apache Arrow's tensor data (`Arrow::Tensor`) and Numo::NArray data.
 
-Red Arrow Numo::NArray adds `Arrow::Tensor#to_narray` and `#to_arrow` to `Numo::NArray`'s numerical subclasses such as `Numo::Int8`. `Arrow::Tensor#to_narray` returns a `Numo::NArray`'s numerical subclass such as `Numo::Int8`. `#to_arrow` returns a `Arrow::Tensor`.
+Red Arrow Numo::NArray adds `Arrow::Tensor#to_narray` and `#to_arrow`/`#to_arrow_array` to `Numo::NArray`'s numerical subclasses such as `Numo::Int8`. `Arrow::Tensor#to_narray` returns a `Numo::NArray`'s numerical subclass such as `Numo::Int8`. `#to_arrow` returns a `Arrow::Tensor`. `#to_arrow_array` returns an `Arrow::Array` instance if the original object is an 1 dimensional array.
 
 ## Install
 
