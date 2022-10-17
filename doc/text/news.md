@@ -1,5 +1,12 @@
 # News
 
+## 0.0.6 - 2022-10-17
+
+### Improvements
+
+  * Added support for `#to_arrow_array` that is available since Red
+    Arrow 11.0.0.
+
 ## 0.0.5 - 2020-05-23
 
 ### Fixes
